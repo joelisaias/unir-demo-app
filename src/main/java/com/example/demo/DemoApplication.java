@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 
 @SpringBootApplication
 @RestController
@@ -18,7 +19,12 @@ public class DemoApplication {
 
 	@GetMapping
 	public Map<String,String> home(){
-		Map<String,String> response=new HashMap<>();
+		/*
+		Properties response=new Properties();
+		response.put("Saludo","Hola Mundo desde azure");
+		response.putAll(System.getProperties());
+		*/
+		Map<String,String> response=new HashMap<>(System.getenv());
 		response.put("Saludo","Hola Mundo desde azure");
 		return response;
 	}
